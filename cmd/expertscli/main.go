@@ -14,6 +14,10 @@ func main() {
 		&commands.Ping{},
 		&commands.Echo{},
 		&commands.Version{},
+		&commands.Env{},
+		&commands.Hash{},
+		&commands.Base64{},
+		&commands.UUID{},
 	})
 	if err != nil {
 		fmt.Println(err)
