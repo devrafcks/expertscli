@@ -83,6 +83,63 @@ go run ./cmd/expertscli/main.go echo --text "hello" --upper
 
 ---
 
+### `env`
+
+Lista as variaveis de ambiente do sistema. Use `--filter` para buscar por nome.
+
+```bash
+go run ./cmd/expertscli/main.go env
+go run ./cmd/expertscli/main.go env --filter PATH
+```
+
+| Flag       | Tipo   | Obrigatorio |
+|------------|--------|-------------|
+| `--filter` | string | nao         |
+
+---
+
+### `hash`
+
+Gera o hash SHA256 ou MD5 de um texto.
+
+```bash
+go run ./cmd/expertscli/main.go hash --text "Hello, world!"
+go run ./cmd/expertscli/main.go hash --text "Hello, world!" --algo md5
+```
+
+| Flag     | Tipo   | Obrigatorio | Default  |
+|----------|--------|-------------|----------|
+| `--text` | string | sim         | -        |
+| `--algo` | string | nao         | sha256   |
+
+---
+
+### `base64`
+
+Encoda ou decoda um texto em base64.
+
+```bash
+go run ./cmd/expertscli/main.go base64 --text "Hello, world!"
+go run ./cmd/expertscli/main.go base64 --text "SGVsbG8sIHdvcmxkIQ==" --decode
+```
+
+| Flag       | Tipo   | Obrigatorio | Default |
+|------------|--------|-------------|---------|
+| `--text`   | string | sim         | -       |
+| `--decode` | bool   | nao         | false   |
+
+---
+
+### `uuid`
+
+Gera um UUID v4 criptograficamente aleatorio.
+
+```bash
+go run ./cmd/expertscli/main.go uuid
+```
+
+---
+
 ### `version`
 
 Exibe a versao atual do expertscli.
@@ -115,6 +172,10 @@ expertscli/
 │   │   ├── message.go    # envia uma mensagem
 │   │   ├── ping.go       # verifica uma url
 │   │   ├── echo.go       # ecoa texto no terminal
+│   │   ├── env.go        # lista variaveis de ambiente
+│   │   ├── hash.go       # gera hash sha256 ou md5
+│   │   ├── base64.go     # encoda/decoda base64
+│   │   ├── uuid.go       # gera uuid v4
 │   │   └── version.go    # exibe a versao do cli
 │   ├── expertscli/
 │   │   └── main.go       # entrypoint
@@ -124,3 +185,8 @@ expertscli/
 └── go.mod
 ```
 
+---
+
+## Autor
+
+Feito por [devrafcks](https://github.com/devrafcks) durante o intensivo de Go da Rocketseat.
